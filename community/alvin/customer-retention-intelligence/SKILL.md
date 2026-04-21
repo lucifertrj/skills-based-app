@@ -1,9 +1,9 @@
 ---
-name: customer-communication-intelligence
+name: customer-retention-intelligence
 description: Analyzes customer support chats, tickets, and messages to compute satisfaction metrics, detect frustration, score response quality, predict churn risk, and suggest the best next action. Use when given support conversations, customer messages, WhatsApp threads, or tickets and asked to evaluate, score, improve, or act on them. Also use for CSAT, NPS, CES analysis, escalation decisions, or agent performance reviews.
 ---
 
-# Customer Communication Intelligence
+# Customer Retention Intelligence
 
 This skill is a **decision-making and metrics engine** for customer support interactions.
 It is NOT a reply generator. It is NOT a chatbot. It computes the metrics that real
