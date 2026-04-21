@@ -1,9 +1,7 @@
 ---
-
 name: pandas-eda-workflow
 description: Pandas EDA skill - Covers data loading, cleaning, transformation, aggregation, and visualization workflows used in real-world data analysis.
----------------------------------------------------------------------------------------------------------------------------------------------------------
-
+---
 ## Overview
 
 Pandas is a powerful data analysis library in Python used for handling structured data.
