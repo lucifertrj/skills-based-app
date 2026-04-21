@@ -8,7 +8,6 @@ version: 3.1.0
 
 # ⚡ Compressing Intelligence: Model Optimization for Real Systems
 
-![Neural Compression Hero](assets/hero.png)
 
 Welcome! In this skill, you’ll learn how modern AI systems transform large models into efficient, deployable systems used in real-world applications.
 
