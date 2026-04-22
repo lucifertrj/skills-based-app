@@ -1,4 +1,3 @@
-# Transformers Skill
 ---
 name: transformers-huggingface
 description: >
@@ -16,15 +15,25 @@ tags: [transformers, nlp, huggingface, fine-tuning, python, deep-learning]
 license: MIT
 ---
 
-## When to use this skill
-Use this skill when the task involves:
-- Loading and using pre-trained transformer models (BERT, GPT-2, T5, etc.)
+# Transformers Skill
+
+A comprehensive guide for loading, fine-tuning, and running inference with
+pre-trained transformer models using the Hugging Face `transformers` library.
+
+---
+
+## Scope
+
+**Use this skill for:**
+- Loading pre-trained transformer models (BERT, GPT-2, T5, etc.)
 - Fine-tuning transformers on custom datasets
 - Text classification, summarization, translation, or question answering
 - Tokenization and encoding of text for transformer input
-- Working with the Hugging Face `transformers` library
 
-Do NOT use this skill for: CNNs, RNNs, non-NLP tasks, or raw PyTorch/TensorFlow without transformers.
+**Do NOT use this skill for:**
+- CNNs, RNNs, or non-transformer architectures
+- Raw PyTorch/TensorFlow without the Hugging Face library
+- NLTK or spaCy pipelines
 
 ---
 
@@ -65,7 +74,7 @@ print(result)  # [{'label': 'POSITIVE', 'score': 0.99}]
 Use this when you need more control than `pipeline()` provides.
 
 **Steps:**
-1. Import `AutoTokenizer` and `AutoModel` (or task-specific class like `AutoModelForSequenceClassification`)
+1. Import `AutoTokenizer` and `AutoModel`
 2. Call `.from_pretrained("model-name")` on both
 3. Tokenize your text with `return_tensors="pt"` for PyTorch
 4. Pass tokens to the model
@@ -89,7 +98,7 @@ logits = outputs.logits
 **Prerequisites:** `pip install transformers datasets torch`
 
 **Steps:**
-1. Load your dataset using `datasets` library or a custom DataFrame
+1. Load your dataset using the `datasets` library
 2. Tokenize using `dataset.map()` with your tokenizer
 3. Load model with `AutoModelForSequenceClassification.from_pretrained(..., num_labels=N)`
 4. Define `TrainingArguments`
@@ -139,12 +148,14 @@ print(result[0]["generated_text"])
 
 ## Guardrails & Common Pitfalls
 
-- ❌ **Don't** forget `return_tensors="pt"` when tokenizing for PyTorch — the model will throw a type error
-- ❌ **Don't** mix tokenizers and models from different model families (e.g., BERT tokenizer with GPT-2 model)
-- ❌ **Don't** skip `truncation=True` on long texts — transformers have a max token limit (usually 512)
-- ⚠️ **Always** call `model.eval()` during inference to disable dropout
-- ⚠️ GPU memory errors → reduce `per_device_train_batch_size` or use `gradient_accumulation_steps`
-- ⚠️ First run downloads model weights — ensure internet access and ~500MB+ free disk space
+| Pitfall | Symptom | Fix |
+|---|---|---|
+| Missing `return_tensors="pt"` | Type error on model input | Always pass `return_tensors="pt"` |
+| Mismatched tokenizer and model | Wrong outputs or errors | Use same model family for both |
+| No `truncation=True` on long text | Token limit exceeded | Always set `truncation=True` |
+| Skipping `model.eval()` | Inconsistent inference results | Call `model.eval()` before inference |
+| GPU memory error | CUDA out of memory | Reduce `per_device_train_batch_size` |
+| First run hangs | Downloading model weights | Ensure internet access, ~500MB free disk |
 
 ---
 
