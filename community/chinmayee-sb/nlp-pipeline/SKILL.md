@@ -47,7 +47,6 @@ For deeper reference material, see the `resources/` folder:
 
 ---
 
-## Level 1 — Metadata & Environment Setup
 
 ### Required Packages
 
@@ -73,7 +72,6 @@ nltk.download('omw-1.4')                     # Open Multilingual WordNet
 
 ---
 
-## Level 2 — Instructions
 
 ### Step 1: Basic Text Cleaning
 
