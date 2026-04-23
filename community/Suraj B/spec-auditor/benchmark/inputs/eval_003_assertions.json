@@ -1,0 +1,16 @@
+{
+  "eval_id": 3,
+  "eval_name": "large-clean-spec-data-pipeline",
+  "prompt": "Audit this RFC for the events ingestion pipeline. Tell me if it's ready to implement.",
+  "files": ["eval_003_data_pipeline.md"],
+  "purpose": "A thorough ~1,500-word spec with most elements in place. Tests that the skill doesn't hallucinate issues on a well-written document, that it can identify subtle risks, and that its recommendation is proportionate (SHIP or REVISE, not BLOCK_ON).",
+  "assertions": [
+    {"text": "Recommendation is SHIP or REVISE — NOT BLOCK_ON.", "must_pass": true},
+    {"text": "Flags the replay-window vs retention-window risk (both are 7 days — edge case on replay of near-expiry events).", "must_pass": false, "note": "High-quality audit catches this; not all will."},
+    {"text": "Flags the unsigned Confluent Schema Registry dependency ('in progress — target 2026-04-30') as a Major risk, since it's load-bearing for Q2 rollout.", "must_pass": true},
+    {"text": "Does NOT flag the Avro envelope definition as ambiguous — it's precise.", "must_pass": true},
+    {"text": "Does NOT recommend BLOCK_ON on a spec that has Acceptance Criteria, Non-Goals, Security, and Dependencies all populated.", "must_pass": true},
+    {"text": "Correctly identifies the at-least-once vs zero-event-loss framing as worth clarifying (Minor).", "must_pass": false},
+    {"text": "Number of findings is proportionate — under 10 total, most Minor or none-Critical.", "must_pass": true}
+  ]
+}

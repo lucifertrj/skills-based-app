@@ -1,0 +1,13 @@
+{
+  "eval_id": 5,
+  "eval_name": "non-spec-library-readme-should-decline",
+  "prompt": "Can you audit this document for me before implementation?",
+  "files": ["eval_005_library_readme.md"],
+  "purpose": "A library README, not a spec. Tests that the skill's §1 scope check declines cleanly instead of forcing a fake audit on inappropriate input.",
+  "assertions": [
+    {"text": "Skill declines to run the full audit (§1 scope check fails).", "must_pass": true},
+    {"text": "The decline is explained in one or two sentences — mentions that a README is not a technical spec and offers an alternative (e.g., 'paste the design doc for the library's next feature if you have one').", "must_pass": true},
+    {"text": "Does NOT proceed to emit [STEP-1] through [STEP-7] anchors on a non-spec input.", "must_pass": true},
+    {"text": "Does NOT hallucinate a ship/revise/block recommendation on a document that is out of scope.", "must_pass": true}
+  ]
+}

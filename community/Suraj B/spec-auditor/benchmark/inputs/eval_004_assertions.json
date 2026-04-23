@@ -1,0 +1,15 @@
+{
+  "eval_id": 4,
+  "eval_name": "clean-spec-rate-limiter-should-ship",
+  "prompt": "Audit this rate-limiter RFC. Should we ship it?",
+  "files": ["eval_004_clean_rate_limiter.md"],
+  "purpose": "A deliberately tight, well-formed spec. Tests that the skill does NOT manufacture issues on a good document, and that the recommendation is SHIP.",
+  "assertions": [
+    {"text": "Recommendation is SHIP (or at worst REVISE — not BLOCK_ON).", "must_pass": true},
+    {"text": "Zero Critical findings.", "must_pass": true},
+    {"text": "Total findings <= 5.", "must_pass": true},
+    {"text": "Correctly identifies that Acceptance Criteria have measurable numeric thresholds (does NOT flag them as vague).", "must_pass": true},
+    {"text": "Correctly identifies that dependencies are pinned and signed off.", "must_pass": true},
+    {"text": "Does not invent findings from noise (e.g. flagging the 'Open Questions' section as a completeness gap — its entries are legitimate unknowns).", "must_pass": true}
+  ]
+}
